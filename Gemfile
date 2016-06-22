@@ -3,6 +3,12 @@ source 'https://rubygems.org'
 # heroku gem
 gem 'rails_12factor', group: :production
 
+# firehose gems
+group :test, :development do
+  gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails', '~> 4.0'
+end
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
