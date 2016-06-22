@@ -7,7 +7,6 @@ class TasksController < ApplicationController
     task = Task.find_by_id(params[:id])
     task.update_attributes(task_params)
     render json: task
-
   end
 
   private
