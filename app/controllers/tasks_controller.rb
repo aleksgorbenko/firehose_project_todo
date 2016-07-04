@@ -5,7 +5,11 @@ class TasksController < ApplicationController
 
   def create
     task = Task.create(task_params)
-    render json: task
+    if task.valid?
+      render json: task
+    else
+      render json: task.errors, status: :unprocessable_entity
+    end
   end
 
   def update

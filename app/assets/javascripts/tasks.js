@@ -68,6 +68,9 @@ $(function() {
         $(".toggle").click(toggleTask);
         $(".new-todo").val('');
       });
+      // .fail(function( data ) {
+      //   console.log( data);
+      // });
     });
 
   });
