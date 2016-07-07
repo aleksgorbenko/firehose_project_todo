@@ -4,6 +4,8 @@ class TasksController < ApplicationController
   end
 
   def create
+    STDERR.puts task_params.inspect
+
     task = Task.create(task_params)
     if task.valid?
       render json: task

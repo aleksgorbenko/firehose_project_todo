@@ -53,24 +53,35 @@ $(function() {
     // submits the new todo into the database
     $('#new-form').submit(function(event) {
       event.preventDefault();
-      var textbox = $('.new-todo');
-        if (textbox.val() !== '') {
-          var payload = {
-          task: {
-            title: textbox.val()
-          }
-        };
-      };
-      $.post("/tasks", payload).success(function( data ) {
+      // INCORRECT WAY
+      // var textbox = $('.new-todo');
+      //   if (textbox.val() !== '') {
+      //     var payload = {
+      //     task: {
+      //       title: textbox.val()
+      //     }
+      //   };
+      // };
+      $.post("/tasks", $('#new-form').serialize()).success(function( data ) {
         var htmlString = taskHtml(data);
         var ulTodos = $(".todo-list");
         ulTodos.append(htmlString);
         $(".toggle").click(toggleTask);
         $(".new-todo").val('');
+      })
+
+      .fail(function( data ) {
+        var emptyTodo = "Todo has to be at least 3 characters";
+        var placeHolder = $("#new-form input").attr("placeholder", emptyTodo);
+
+        placeHolder.toggleClass("empty-todo-error");
+
+        setTimeout(function() {
+          placeHolder.toggleClass("empty-todo-error");
+          placeHolder = placeHolder.attr("placeholder", "Add a new todo...");
+        }, 3000);
+
       });
-      // .fail(function( data ) {
-      //   console.log( data);
-      // });
     });
 
   });

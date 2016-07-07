@@ -71,6 +71,10 @@ body {
   color: #e6e6e6;
 }
 
+#new-form .empty-todo-error::-webkit-input-placeholder {
+  color: #E3978E;
+}
+
 .todoapp h1 {
   position: absolute;
   top: -155px;
