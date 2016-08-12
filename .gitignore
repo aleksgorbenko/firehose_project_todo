@@ -14,3 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Dev Machines
+.DS_Store
+*/.DS_Store
